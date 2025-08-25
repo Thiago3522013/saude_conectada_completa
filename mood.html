@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Registrar Humor</h2>
+<form method="post" class="row g-3">
+  <div class="col-md-4">
+    <label class="form-label">Como você está hoje?</label>
+    <select name="mood" class="form-select" required>
+      <option value="feliz">Feliz</option>
+      <option value="neutro">Neutro</option>
+      <option value="cansado">Cansado</option>
+      <option value="ansioso">Ansioso</option>
+      <option value="triste">Triste</option>
+    </select>
+  </div>
+  <div class="col-md-8">
+    <label class="form-label">Observações</label>
+    <input type="text" name="notes" class="form-control" placeholder="Opcional">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-success">Salvar humor</button>
+  </div>
+</form>
+{% endblock %}

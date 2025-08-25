@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="row align-items-center">
+  <div class="col-lg-7">
+    <h1 class="display-6 fw-bold mb-3">Bem-vindo{{ ' ' + user.name if user else '' }}!</h1>
+    <p class="lead">Este é um protótipo da plataforma <strong>Saúde Conectada</strong> para monitoramento personalizado de bem-estar.</p>
+    <ul>
+      <li>Cadastre seu <a href="{{ url_for('setup') }}">perfil</a></li>
+      <li>Registre <a href="{{ url_for('log_activity') }}">atividades</a> e <a href="{{ url_for('mood') }}">humor</a></li>
+      <li>Veja recomendações no <a href="{{ url_for('dashboard') }}">dashboard</a></li>
+      <li>Compartilhe dicas na <a href="{{ url_for('community') }}">comunidade</a></li>
+    </ul>
+  </div>
+  <div class="col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title mb-2">Pontuação (gamificação)</h5>
+        <p class="display-6">{{ points }}</p>
+        <p class="text-muted mb-0">Ganhe pontos ao registrar exercícios, alimentação e humor.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

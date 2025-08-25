@@ -1,0 +1,29 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Registrar Atividade</h2>
+<form method="post" class="row g-3">
+  <div class="col-md-4">
+    <label class="form-label">Tipo</label>
+    <select class="form-select" name="type" required>
+      <option value="exercicio">Exercício</option>
+      <option value="alimentacao">Alimentação</option>
+    </select>
+  </div>
+  <div class="col-md-8">
+    <label class="form-label">Descrição</label>
+    <input type="text" class="form-control" name="value" placeholder="Ex.: Corrida 30min / Salada + frango / 2L água" required>
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Minutos (se exercício)</label>
+    <input type="number" class="form-control" name="minutes">
+  </div>
+  <div class="col-md-4">
+    <label class="form-label">Calorias (se alimentação)</label>
+    <input type="number" class="form-control" name="calories">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-success">Salvar registro</button>
+  </div>
+</form>
+{% endblock %}

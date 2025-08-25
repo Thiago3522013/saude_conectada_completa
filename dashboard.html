@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-3">Dashboard</h2>
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Recomendações</h5>
+        <ul class="mb-0">
+          {% for r in recs %}
+          <li>{{ r }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Pontuação</h5>
+        <p class="display-6">{{ points }}</p>
+        <p class="text-muted">Ganhe pontos com registros diários.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Atalhos</h5>
+        <a class="btn btn-outline-primary w-100 mb-2" href="{{ url_for('log_activity') }}">+ Atividade</a>
+        <a class="btn btn-outline-primary w-100" href="{{ url_for('mood') }}">+ Humor</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 mt-1">
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Atividades recentes</h5>
+        <ul class="mb-0">
+          {% for a in activities %}
+          <li>
+            <strong>{{ a.type.capitalize() }}</strong> — {{ a.value }} 
+            {% if a.minutes %} | {{ a.minutes }} min{% endif %}
+            {% if a.calories %} | {{ a.calories }} kcal{% endif %}
+            <span class="text-muted">({{ a.created_at.strftime('%d/%m/%Y') }})</span>
+          </li>
+          {% else %}
+          <li>Nenhum registro ainda.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Humor recente</h5>
+        <ul class="mb-0">
+          {% for m in moods %}
+          <li><strong>{{ m.mood }}</strong> — {{ m.notes or '' }} <span class="text-muted">({{ m.created_at.strftime('%d/%m/%Y') }})</span></li>
+          {% else %}
+          <li>Nenhum humor registrado.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
